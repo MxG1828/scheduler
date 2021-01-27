@@ -23,13 +23,13 @@ const Appointment = (props) => {
     !props.interview || !props.interview.student || !props.interview.interviewer? EMPTY : SHOW
   );
   
-  const save = (name, interviewer) => {
+  const save = (name, interviewer, edit) => {
     const interview = {
       student: name,
       interviewer
     };
     transition(SAVE);
-    props.bookInterview(props.id, interview)
+    props.bookInterview(props.id, interview, edit)
     .then(()=>transition(SHOW))
     .catch(()=>transition(ERROR_SAVE,true))
   };
@@ -45,7 +45,7 @@ const Appointment = (props) => {
 
 
   return (
-    <article className="appointment">
+    <article data-testid="appointment" className="appointment">
       <Header time={props.time} />
       {mode === ERROR_SAVE && <Error onClose={()=>back()} message={"Could not save appointment."}/>}
       {mode === ERROR_DELETE && <Error onClose={()=>back()} message={"Could not delete appointment."} />}
