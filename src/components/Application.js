@@ -6,9 +6,9 @@ import Appointment from "./appointment/index";
 import DayList from "components/DayList";
 import { findAllByLabelText } from "@testing-library/react";
 import getAppointmentsForDay from "../helper/selectors";
-import {getInterview} from "../helper/selectors";
-import {getInterviewersForDay} from "../helper/selectors"
-import useApplicationData from "../hooks/useApplicationData"
+import { getInterview } from "../helper/selectors";
+import { getInterviewersForDay } from "../helper/selectors";
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application(props) {
   const {
@@ -17,13 +17,18 @@ export default function Application(props) {
     bookInterview,
     cancelInterview,
   } = useApplicationData();
-  
-  
-  const dailyAppointments = getAppointmentsForDay({days:state.days, appointments:state.appointments},state.day);
-  const dailyInterviewers = getInterviewersForDay({days:state.days, interviewers: state.interviewers},state.day);
-  const Schedule = dailyAppointments.map((appointment) => { 
+
+  const dailyAppointments = getAppointmentsForDay(
+    { days: state.days, appointments: state.appointments },
+    state.day
+  );
+  const dailyInterviewers = getInterviewersForDay(
+    { days: state.days, interviewers: state.interviewers },
+    state.day
+  );
+  const Schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-  
+
     return (
       <Appointment
         key={appointment.id}
@@ -36,7 +41,6 @@ export default function Application(props) {
       />
     );
   });
-
 
   return (
     <main className="layout">

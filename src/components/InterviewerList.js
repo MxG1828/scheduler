@@ -1,7 +1,7 @@
 import React from "react";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "components/InterviewerListItem";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const InterviewerList = (props) => {
   const items = props.interviewers.map((item) => {
@@ -28,7 +28,7 @@ const InterviewerList = (props) => {
 
 InterviewerList.propTypes = {
   interviewers: PropTypes.array,
-  value: PropTypes.number
+  value: PropTypes.number,
 };
 
 export default InterviewerList;

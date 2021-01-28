@@ -45,7 +45,7 @@ const useApplicationData = () => {
       ...state.appointments,
       [id]: appointment,
     };
-    const newDays = edit? spotsLeft(0) : spotsLeft(-1)
+    const newDays = edit ? spotsLeft(0) : spotsLeft(-1);
     return axios
       .put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {
